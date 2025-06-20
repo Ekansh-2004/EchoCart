@@ -1,0 +1,110 @@
+/* Echocart-inspired Login Page Theme */
+
+.login-container {
+	min-height: 100vh;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	background: linear-gradient(135deg, #0071ce 0%, #f7f7f7 100%);
+	padding: 2vw;
+	box-sizing: border-box;
+}
+
+.login-box {
+	background: #fff;
+	padding: 1.5rem 2rem;
+	border-radius: 16px;
+	box-shadow: 0 8px 32px 0 rgba(0, 113, 206, 0.15);
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	width: 100%;
+	max-width: 350px;
+	min-width: 0;
+	box-sizing: border-box;
+}
+
+.echomart-logo,
+.echocart-logo {
+	width: 160px;
+	max-width: 60vw;
+	margin-bottom: 1.5rem;
+	display: block;
+}
+
+h2 {
+	color: #0071ce;
+	margin-bottom: 1.5rem;
+	font-weight: 700;
+	text-align: center;
+}
+
+.login-input {
+	width: 100%;
+	padding: 0.75rem 1rem;
+	margin-bottom: 1rem;
+	border: 1px solid #e0e0e0;
+	border-radius: 8px;
+	font-size: 1rem;
+	background: #f7f7f7;
+	transition: border 0.2s;
+	box-sizing: border-box;
+}
+
+.login-input:focus {
+	border: 1.5px solid #0071ce;
+	outline: none;
+}
+
+.login-btn {
+	width: 100%;
+	padding: 0.75rem 1rem;
+	background: #ffc220;
+	color: #222;
+	border: none;
+	border-radius: 8px;
+	font-size: 1.1rem;
+	font-weight: 600;
+	cursor: pointer;
+	margin-bottom: 1rem;
+	transition: background 0.2s;
+}
+
+.login-btn:hover {
+	background: #ffd700;
+}
+
+.signup-link {
+	color: #555;
+	font-size: 0.95rem;
+	text-align: center;
+}
+
+.signup-link a {
+	color: #0071ce;
+	text-decoration: none;
+	font-weight: 500;
+}
+.signup-link a:hover {
+	text-decoration: underline;
+}
+
+@media (max-width: 500px) {
+	.login-box {
+		padding: 1.2rem 0.5rem;
+		max-width: 95vw;
+	}
+	.echomart-logo,
+	.echocart-logo {
+		width: 110px;
+		max-width: 80vw;
+	}
+	h2 {
+		font-size: 1.2rem;
+	}
+	.login-input,
+	.login-btn {
+		font-size: 0.95rem;
+		padding: 0.6rem 0.7rem;
+	}
+}
