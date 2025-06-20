@@ -1,3 +1,4 @@
+import "./index.css";
 import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import Loginpage from "./components/Loginpage";
