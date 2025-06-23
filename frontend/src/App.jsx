@@ -2,6 +2,7 @@ import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
 
 import Loginpage from "./components/Loginpage";
 import Signup from "./components/Signup";
+import ShoppingCart from "./components/shopping-cart";
 
 function App() {
 	return (
@@ -14,6 +15,10 @@ function App() {
 				<Route
 					path="/signup"
 					element={<Signup />}
+				/>
+				<Route
+					path="/shopping-cart"
+					element={<ShoppingCart />}
 				/>
 			</Routes>
 		</Router>
