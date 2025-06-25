@@ -6,6 +6,7 @@ function ShoppingCart() {
   const [popupOpen, setPopupOpen] = useState(false);
   const [popupItemKey, setPopupItemKey] = useState(null);
   const [popupQuantity, setPopupQuantity] = useState('');
+  const [popupMode, setPopupMode] = useState('add'); // 'add' or 'remove'
 
   useEffect(() => {
     fetch('/cart-data.json')
@@ -17,33 +18,46 @@ function ShoppingCart() {
   const handleAdd = (key) => {
     setPopupItemKey(key);
     setPopupQuantity('');
+    setPopupMode('add');
     setPopupOpen(true);
   };
 
-  const confirmAdd = () => {
+  const handleRemove = (key) => {
+    setPopupItemKey(key);
+    setPopupQuantity('');
+    setPopupMode('remove');
+    setPopupOpen(true);
+  };
+
+  const confirmAction = () => {
     const quantity = parseInt(popupQuantity, 10);
     if (!isNaN(quantity) && quantity > 0) {
-      setCart((prevCart) => ({
-        ...prevCart,
-        [popupItemKey]: {
-          ...prevCart[popupItemKey],
-          quantity: prevCart[popupItemKey].quantity + quantity,
-        },
-      }));
-      setPopupOpen(false);
+      if (popupMode === 'add') {
+        setCart((prevCart) => ({
+          ...prevCart,
+          [popupItemKey]: {
+            ...prevCart[popupItemKey],
+            quantity: prevCart[popupItemKey].quantity + quantity,
+          },
+        }));
+        setPopupOpen(false);
+      } else if (popupMode === 'remove') {
+        if (quantity > cart[popupItemKey].quantity) {
+          alert('Cannot remove more than present in cart.');
+          return;
+        }
+        setCart((prevCart) => ({
+          ...prevCart,
+          [popupItemKey]: {
+            ...prevCart[popupItemKey],
+            quantity: prevCart[popupItemKey].quantity - quantity,
+          },
+        }));
+        setPopupOpen(false);
+      }
     } else {
       alert('Please enter a valid number greater than 0.');
     }
-  };
-
-  const handleDelete = (key) => {
-    setCart((prevCart) => ({
-      ...prevCart,
-      [key]: {
-        ...prevCart[key],
-        quantity: 0,
-      },
-    }));
   };
 
   const cartItems = Object.entries(cart);
@@ -54,7 +68,6 @@ function ShoppingCart() {
       <div className={`cart-fullscreen-bg ${popupOpen ? 'blurred' : ''}`}>
         <div className="cart-header">
           <h2>🛒 EchoCart Inventory</h2>
-          <span className="cart-total-count">Total: {totalItems}</span>
         </div>
         <div className="cart-items-grid">
           {cartItems.map(([key, item]) => (
@@ -68,7 +81,7 @@ function ShoppingCart() {
               </div>
               <div className="cart-item-actions">
                 <button onClick={() => handleAdd(key)}>Add</button>
-                <button className="cart-item-delete" onClick={() => handleDelete(key)}>
+                <button className="cart-item-delete" onClick={() => handleRemove(key)}>
                   Delete
                 </button>
               </div>
@@ -81,19 +94,23 @@ function ShoppingCart() {
       {popupOpen && (
         <div className="popup-overlay">
           <div className="popup-form">
-            <h3>Enter quantity for {cart[popupItemKey]?.name}</h3>
+            <h3>
+              {popupMode === 'add'
+                ? `Enter quantity to add for ${cart[popupItemKey]?.name}`
+                : `Enter quantity to remove for ${cart[popupItemKey]?.name}`}
+            </h3>
             <input
               type="number"
               placeholder="Quantity"
               value={popupQuantity}
               onChange={(e) => setPopupQuantity(e.target.value)}
               onKeyDown={(e) => {
-                if (e.key === 'Enter') confirmAdd();
+                if (e.key === 'Enter') confirmAction();
               }}
               autoFocus
             />
             <div>
-              <button className="add-btn" onClick={confirmAdd}>
+              <button className="add-btn" onClick={confirmAction}>
                 Confirm
               </button>
               <button className="cancel-btn" onClick={() => setPopupOpen(false)}>

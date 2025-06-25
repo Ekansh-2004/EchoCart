@@ -1,14 +1,18 @@
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
 import "./index.css";
 
 import Loginpage from "./components/Loginpage";
 import Main from "./components/Main";
 import Signup from "./components/Signup";
 import ShoppingCart from "./components/shopping-cart";
+import Navigation from "./components/Navigation";
 
-function App() {
+function AppRoutes() {
+	const location = useLocation();
+	const showNav = ["/main", "/cart"].includes(location.pathname);
 	return (
-		<Router>
+		<>
+			{showNav && <Navigation />}
 			<Routes>
 				<Route
 					path="/"
@@ -19,7 +23,7 @@ function App() {
 					element={<Signup />}
 				/>
 				<Route
-					path="/shopping-cart"
+					path="/cart"
 					element={<ShoppingCart />}
 				/>
 				<Route
@@ -27,6 +31,14 @@ function App() {
 					element={<Main />}
 				/>
 			</Routes>
+		</>
+	);
+}
+
+function App() {
+	return (
+		<Router>
+			<AppRoutes />
 		</Router>
 	);
 }

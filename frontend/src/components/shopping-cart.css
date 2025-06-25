@@ -2,7 +2,7 @@
 .cart-fullscreen-bg {
   min-height: 100vh;
   width: 100vw;
-  background: linear-gradient(to right, #6dd5fa, #2980b9);
+  background: linear-gradient(135deg, #0071ce 0%, #f7f7f7 100%);
   display: flex;
   flex-direction: column;
   align-items: center;
