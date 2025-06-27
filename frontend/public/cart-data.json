@@ -1,0 +1,12 @@
+{
+  "apples": { "name": "Apples", "quantity": 0, "unit": "kg", "image": "https://images.pexels.com/photos/102104/pexels-photo-102104.jpeg" },
+  "bananas": { "name": "Bananas", "quantity": 0, "unit": "kg", "image": "https://images.pexels.com/photos/461208/pexels-photo-461208.jpeg" },
+  "mangoes": { "name": "Mangoes", "quantity": 0, "unit": "kg", "image": "https://images.pexels.com/photos/235725/pexels-photo-235725.jpeg" },
+  "oranges": { "name": "Oranges", "quantity": 0, "unit": "kg", "image": "https://images.pexels.com/photos/42059/orange-fruit-vitamins-healthy-eating-42059.jpeg" },
+  "milk": { "name": "Milk", "quantity": 0, "unit": "ltr", "image": "https://images.pexels.com/photos/416656/pexels-photo-416656.jpeg" },
+  "bread": { "name": "Bread", "quantity": 0, "unit": "pcs", "image": "https://images.pexels.com/photos/2434/food-healthy-vegetables-potatoes.jpg" },
+  "shampoo": { "name": "Shampoo", "quantity": 0, "unit": "pcs", "image": "https://images.pexels.com/photos/3738341/pexels-photo-3738341.jpeg" },
+  "soaps": { "name": "Soaps", "quantity": 0, "unit": "pcs", "image": "https://images.pexels.com/photos/41165/soap-soap-bubble-bath-bubble-41165.jpeg" },
+  "toothpaste": { "name": "Toothpaste", "quantity": 0, "unit": "pcs", "image": "https://images.pexels.com/photos/535743/pexels-photo-535743.jpeg" },
+  "eggs": { "name": "Eggs", "quantity": 0, "unit": "pcs", "image": "https://images.pexels.com/photos/162712/eggs-egg-carton-chicken-eggs-162712.jpeg" }
+}
