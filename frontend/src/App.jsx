@@ -17,7 +17,8 @@ function AppRoutes() {
 	}, [checkAuth]);
 
 	const location = useLocation();
-	const showNav = ["/", "/main", "/cart"].includes(location.pathname);
+	const showNav = ["/", "/main", "/cart"].some((path) => location.pathname.startsWith(path));
+
 	return (
 		<>
 			{showNav && <Navigation />}
