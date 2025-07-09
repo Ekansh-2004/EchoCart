@@ -1,109 +1,329 @@
-/* Echocart-inspired Signup Page Theme */
+/* Enhanced Echocart Signup Page Theme */
+
 .signup-container {
 	min-height: 100vh;
 	display: flex;
 	align-items: center;
 	justify-content: center;
-	background: linear-gradient(135deg, #0071ce 0%, #f7f7f7 100%);
+	background: linear-gradient(135deg, #0071ce 0%, #004a8a 50%, #f7f7f7 100%);
 	padding: 2vw;
 	box-sizing: border-box;
+	position: relative;
+	overflow: hidden;
+}
+
+.signup-container::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	background: 
+		radial-gradient(circle at 30% 70%, rgba(255, 194, 32, 0.1) 0%, transparent 50%),
+		radial-gradient(circle at 70% 30%, rgba(0, 113, 206, 0.1) 0%, transparent 50%);
+	pointer-events: none;
 }
 
 .signup-box {
-	background: #fff;
-	padding: 1.5rem 2rem;
-	border-radius: 16px;
-	box-shadow: 0 8px 32px 0 rgba(0, 113, 206, 0.15);
+	background: rgba(255, 255, 255, 0.95);
+	backdrop-filter: blur(20px);
+	padding: 2rem 2.5rem;
+	border-radius: 24px;
+	box-shadow: 
+		0 20px 40px rgba(0, 113, 206, 0.15),
+		0 8px 32px rgba(0, 0, 0, 0.1),
+		inset 0 1px 0 rgba(255, 255, 255, 0.8);
 	display: flex;
 	flex-direction: column;
 	align-items: center;
 	width: 100%;
-	max-width: 370px;
+	max-width: 420px;
 	min-width: 0;
 	box-sizing: border-box;
+	border: 1px solid rgba(255, 255, 255, 0.2);
+	position: relative;
+	animation: signupBoxSlideIn 0.8s ease-out;
+}
+
+@keyframes signupBoxSlideIn {
+	from {
+		opacity: 0;
+		transform: translateY(30px) scale(0.95);
+	}
+	to {
+		opacity: 1;
+		transform: translateY(0) scale(1);
+	}
 }
 
 .echomart-logo,
 .echocart-logo {
-	width: 160px;
+	width: 180px;
 	max-width: 60vw;
-	margin-bottom: 1.5rem;
+	margin-bottom: 2rem;
 	display: block;
+	filter: drop-shadow(0 4px 8px rgba(0, 113, 206, 0.2));
+	transition: transform 0.3s ease;
+}
+
+.echomart-logo:hover,
+.echocart-logo:hover {
+	transform: scale(1.05);
 }
 
 h2 {
 	color: #0071ce;
-	margin-bottom: 1.5rem;
+	margin-bottom: 2rem;
 	font-weight: 700;
 	text-align: center;
+	font-size: 1.6rem;
+	text-shadow: 0 2px 4px rgba(0, 113, 206, 0.1);
+	position: relative;
+	line-height: 1.3;
+}
+
+h2::after {
+	content: '';
+	position: absolute;
+	bottom: -8px;
+	left: 50%;
+	transform: translateX(-50%);
+	width: 80px;
+	height: 3px;
+	background: linear-gradient(90deg, #ffc220, #0071ce);
+	border-radius: 2px;
 }
 
 .signup-input {
 	width: 100%;
-	padding: 0.75rem 1rem;
-	margin-bottom: 1rem;
-	border: 1px solid #e0e0e0;
-	border-radius: 8px;
+	padding: 1rem 1.2rem;
+	margin-bottom: 1.2rem;
+	border: 2px solid rgba(224, 224, 224, 0.5);
+	border-radius: 12px;
 	font-size: 1rem;
-	background: #f7f7f7;
-	transition: border 0.2s;
+	background: rgba(247, 247, 247, 0.8);
+	backdrop-filter: blur(10px);
+	transition: all 0.3s ease;
 	box-sizing: border-box;
+	position: relative;
 }
 
 .signup-input:focus {
-	border: 1.5px solid #0071ce;
+	border: 2px solid #0071ce;
 	outline: none;
+	background: rgba(255, 255, 255, 0.9);
+	box-shadow: 
+		0 0 0 4px rgba(0, 113, 206, 0.1),
+		0 4px 12px rgba(0, 113, 206, 0.15);
+	transform: translateY(-2px);
+}
+
+.signup-input::placeholder {
+	color: #888;
+	transition: color 0.3s ease;
+}
+
+.signup-input:focus::placeholder {
+	color: #0071ce;
+}
+
+/* Input validation states */
+.signup-input:valid {
+	border-color: #27ae60;
+}
+
+.signup-input:invalid:not(:placeholder-shown) {
+	border-color: #e74c3c;
 }
 
 .signup-btn {
 	width: 100%;
-	padding: 0.75rem 1rem;
-	background: #ffc220;
+	padding: 1rem 1.2rem;
+	background: linear-gradient(135deg, #ffc220 0%, #ffb700 100%);
 	color: #222;
 	border: none;
-	border-radius: 8px;
+	border-radius: 12px;
 	font-size: 1.1rem;
-	font-weight: 600;
+	font-weight: 700;
 	cursor: pointer;
-	margin-bottom: 1rem;
-	transition: background 0.2s;
+	margin-bottom: 1.5rem;
+	transition: all 0.3s ease;
+	box-shadow: 
+		0 4px 12px rgba(255, 194, 32, 0.3),
+		0 2px 4px rgba(0, 0, 0, 0.1);
+	position: relative;
+	overflow: hidden;
+}
+
+.signup-btn::before {
+	content: '';
+	position: absolute;
+	top: 0;
+	left: -100%;
+	width: 100%;
+	height: 100%;
+	background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+	transition: left 0.5s ease;
 }
 
 .signup-btn:hover {
-	background: #ffd700;
+	background: linear-gradient(135deg, #ffb700 0%, #ff9500 100%);
+	transform: translateY(-2px);
+	box-shadow: 
+		0 6px 16px rgba(255, 194, 32, 0.4),
+		0 4px 8px rgba(0, 0, 0, 0.15);
+}
+
+.signup-btn:hover::before {
+	left: 100%;
+}
+
+.signup-btn:active {
+	transform: translateY(0);
+}
+
+.signup-btn:disabled {
+	opacity: 0.7;
+	cursor: not-allowed;
+	transform: none;
 }
 
 .login-link {
-	color: #555;
-	font-size: 0.95rem;
+	color: #666;
+	font-size: 1rem;
 	text-align: center;
+	line-height: 1.5;
 }
 
 .login-link a {
 	color: #0071ce;
 	text-decoration: none;
-	font-weight: 500;
-}
-.login-link a:hover {
-	text-decoration: underline;
+	font-weight: 600;
+	position: relative;
+	transition: color 0.3s ease;
 }
 
+.login-link a::after {
+	content: '';
+	position: absolute;
+	bottom: -2px;
+	left: 0;
+	width: 0;
+	height: 2px;
+	background: #0071ce;
+	transition: width 0.3s ease;
+}
+
+.login-link a:hover {
+	color: #004a8a;
+}
+
+.login-link a:hover::after {
+	width: 100%;
+}
+
+/* Loading state */
+.signup-btn.loading {
+	position: relative;
+	color: transparent;
+}
+
+.signup-btn.loading::after {
+	content: '';
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	width: 20px;
+	height: 20px;
+	border: 2px solid #222;
+	border-top: 2px solid transparent;
+	border-radius: 50%;
+	animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+	0% { transform: translate(-50%, -50%) rotate(0deg); }
+	100% { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Form validation feedback */
+.form-group {
+	position: relative;
+	width: 100%;
+}
+
+.validation-message {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	font-size: 0.8rem;
+	margin-top: 0.2rem;
+	opacity: 0;
+	transform: translateY(-5px);
+	transition: all 0.3s ease;
+}
+
+.validation-message.show {
+	opacity: 1;
+	transform: translateY(0);
+}
+
+.validation-message.error {
+	color: #e74c3c;
+}
+
+.validation-message.success {
+	color: #27ae60;
+}
+
+/* Responsive Design */
 @media (max-width: 500px) {
-	.signup-box {
-		padding: 1.2rem 0.5rem;
-		max-width: 95vw;
+	.signup-container {
+		padding: 1rem;
 	}
+	
+	.signup-box {
+		padding: 1.5rem 1rem;
+		max-width: 95vw;
+		border-radius: 20px;
+	}
+	
 	.echomart-logo,
 	.echocart-logo {
-		width: 110px;
+		width: 140px;
 		max-width: 80vw;
+		margin-bottom: 1.5rem;
 	}
+	
 	h2 {
-		font-size: 1.2rem;
+		font-size: 1.3rem;
+		margin-bottom: 1.5rem;
 	}
+	
 	.signup-input,
 	.signup-btn {
-		font-size: 0.95rem;
-		padding: 0.6rem 0.7rem;
+		font-size: 1rem;
+		padding: 0.8rem 1rem;
+	}
+	
+	.login-link {
+		font-size: 0.9rem;
+	}
+}
+
+@media (max-width: 350px) {
+	.signup-box {
+		padding: 1.2rem 0.8rem;
+	}
+	
+	.echomart-logo,
+	.echocart-logo {
+		width: 120px;
+	}
+	
+	h2 {
+		font-size: 1.1rem;
 	}
 }
