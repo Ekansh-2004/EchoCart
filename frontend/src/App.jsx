@@ -21,7 +21,7 @@ function AppRoutes() {
 
 	return (
 		<>
-			{showNav && <Navigation />}
+			{user && showNav && <Navigation />}
 			<Routes>
 				<Route
 					path="/"
