@@ -96,6 +96,7 @@ h2::after {
 }
 
 .signup-input {
+	color: black;
 	width: 100%;
 	padding: 1rem 1.2rem;
 	margin-bottom: 1.2rem;
